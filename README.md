@@ -7,7 +7,7 @@ Then it will give you a delay of 1 second (You can increase in code). And then i
 detect using your model the object. And using pyautogui draw a rectangle and save it.</br>
 If it did right you can just go to the next image. If not fix it and move on to the next image.
 
-# What it good for?
+# What it's good for?
 Well if you ever tried to train a custom yolo model you understand. It takes a lot of time</br>
 creating a decent dataset for training. I literally swapped hands from time to time to avoid the pain.</br>
 Using this method you can create a really small dataset manually (150-300 images). Train your model</br>
