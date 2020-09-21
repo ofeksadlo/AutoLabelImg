@@ -2,7 +2,7 @@
 Automatically annotate images using your own pre-trained yolo models.
 
 # What is does?
-The program will wait for you to click on any key.</br>
+The tool will wait for you to click on enter.</br>
 Then it will give you a delay of 1 second (You can increase in code). And then it will</br>
 detect using your model the object. And using pyautogui draw a rectangle and save it.</br>
 If it did right you can just go to the next image. If not fix it and move on to the next image.
