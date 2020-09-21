@@ -19,3 +19,7 @@ The tool is meant to help you to do the hard work. You still need to supervise i
 This tool is designed to work only with yolo models. And won't work with another type of a model.
 It will only detect 1 object and only 1 class.
 Tested only on windows.
+
+# Future plans
+1) Detecting more than 1 class and more than 1 object.
+2) Detecting click on Next image or 'D' on the keyboard and re-detecting objects, without the need to press enter.
