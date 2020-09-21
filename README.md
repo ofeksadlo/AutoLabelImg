@@ -16,8 +16,8 @@ on this small dataset and then use this tool to make annotating faster.</br>
 The tool is meant to help you to do the hard work. You still need to supervise it.
 
 # Compatibility
-This tool is designed to work only with yolo models. And won't work with another type of a model.
-It will only detect 1 object and only 1 class.
+This tool is designed to work only with yolo models. And won't work with another type of a model.</br>
+It will only detect 1 object and only 1 class.</br>
 Tested only on windows.
 
 # Future plans
