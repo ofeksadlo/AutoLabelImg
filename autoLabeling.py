@@ -5,10 +5,10 @@ from time import sleep
 import sys
 
 # Enter what class the object you're detecting will be labeled as.
-className = ''
+classesNames = []
 
 # Change the modelConfig.cfg and modelWeights.weights to your own custom model config and weights path.
-net = cv2.dnn.readNetFromDarknet('modelConfig.cfg', 'modelWeights.weights')
+net = cv2.dnn.readNetFromDarknet('yolov4-obj.cfg', 'yolov4-obj_best.weights')
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
@@ -18,6 +18,8 @@ def findObjects(outputs, img):
     bbox = []
     classIds = []
     confs = []
+
+    predictions = []
 
     for output in outputs:
         for detection in output:
@@ -37,7 +39,8 @@ def findObjects(outputs, img):
         box = bbox[i]
         x, y, w, h = box[0], box[1], box[2], box[3]
         cv2.rectangle(img, (box[0], box[1]), (box[0] + box[2], box[1] + box[3]), (0,0,255), thickness=2)
-        return ((x,y), (x+w, y+h))
+        predictions.append([(x,y), (x+w, y+h), classesNames[classIds[i]]])
+    return predictions
         
 
 detectedFlag = False
@@ -57,18 +60,18 @@ while True:
         outputNames.append(layerNames[i[0] - 1])
     outputs = net.forward(outputNames)
     
-    prediction = findObjects(outputs, img)
-    if prediction is not None and detectedFlag == False:
-        detectedFlag = True
-        pt1, pt2 = prediction
-        print("Found " + className + " At " + str(pt1))
-        x, y = pt1
-        press('w')
-        moveTo(x, y)
+    predictions = findObjects(outputs, img)
+    for prediction in predictions:
+        if prediction is not None:
+            pt1, pt2, className = prediction
+            print("Found " + className + " At " + str(pt1))
+            x, y = pt1
+            press('w')
+            moveTo(x, y)
 
-        x, y = pt2
-        dragTo(x, y, duration=0.5)
-        cv2.waitKey(50)
-        write(className)
-        press('enter', presses=2)
-    hotkey('ctrl', 's')
+            x, y = pt2
+            dragTo(x, y, duration=0.5)
+            cv2.waitKey(50)
+            write(className)
+            press('enter', presses=2)
+        hotkey('ctrl', 's')
