@@ -20,7 +20,8 @@ This tool is designed to work only with yolo models.</br>
 Tested only on windows 10 using python 3.7.7</br>
 **<ins>Bonus Tip:<ins>**</br>
 Depending on the image you're detecting you should zoom in and out in order to help</br>
-your model to detect the desired object more accurately.
+your model to detect the desired object more accurately. </br>
+A specially when it's trained on a small dataset (150-300).
 
 # Future plans
 1) ~~Detecting more than 1 class and more than 1 object.~~ (Added)
