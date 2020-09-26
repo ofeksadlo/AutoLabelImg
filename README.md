@@ -21,4 +21,5 @@ Tested only on windows 10 using python 3.7.7
 
 # Future plans
 1) ~~Detecting more than 1 class and more than 1 object.~~ (Added)
-2) Detecting click on Next image or 'D' on the keyboard and re-detecting objects, without the need to press enter.
+2) Detecting click on Next image or 'D' on the keyboard and annotating the objects, without the need to press enter.</br>
+   Letting you focus entirely on fixing defects in the model detections.
