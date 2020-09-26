@@ -17,9 +17,13 @@ The tool is meant to help you to do the hard work. You still need to supervise i
 
 # Compatibility
 This tool is designed to work only with yolo models.</br>
-Tested only on windows 10 using python 3.7.7
+Tested only on windows 10 using python 3.7.7</br>
+**<ins>Bonus Tip:<ins>**</br>
+Depending on the image you're detecting you should zoom in and out in order to help</br>
+your model to detect the desired object more accurately.
 
 # Future plans
 1) ~~Detecting more than 1 class and more than 1 object.~~ (Added)
 2) Detecting click on Next image or 'D' on the keyboard and annotating the objects, without the need to press enter.</br>
    Letting you focus entirely on fixing defects in the model detections.
+
