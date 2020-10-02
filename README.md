@@ -2,6 +2,11 @@
 Automatically annotate images using your own pre-trained yolo models.
 
 ![showcase](showcase%20(2).gif)
+
+# Update
+Added train.py edit the path to the folder with your images and run the script. It</br>
+will loop through all the image and annotate all the images for you.
+
 # What is does?
 The tool will wait for you to click on enter.</br>
 Then it will give you a delay of 1 second (You can increase in code). And then it will</br>
