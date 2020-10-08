@@ -3,12 +3,12 @@ import numpy as np
 from pyautogui import moveTo, screenshot, press, dragTo, write, hotkey
 from time import sleep
 import sys
-
+import keyboard
 # Enter what class the object you're detecting will be labeled as.
-classesNames = []
+classesNames = ['className']
 
 # Change the modelConfig.cfg and modelWeights.weights to your own custom model config and weights path.
-net = cv2.dnn.readNetFromDarknet('yolov4-obj.cfg', 'yolov4-obj_best.weights')
+net = cv2.dnn.readNetFromDarknet('modelConfig.cfg', 'modelWeights.weights')
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
@@ -43,35 +43,37 @@ def findObjects(outputs, img):
     return predictions
         
 
+print("Waiting for you to press Q")
 detectedFlag = False
 while True:
-    input('Press enter for next detection...')
-    sleep(1)
-    img = screenshot()
-    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    if keyboard.is_pressed('q'):
+        # hotkey('alt', 'tab')
+        sleep(0.5)
+        img = screenshot()
+        img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 
 
-    blob = cv2.dnn.blobFromImage(img, 1/255, (416,416), [0,0,0],crop=False)
-    net.setInput(blob)
+        blob = cv2.dnn.blobFromImage(img, 1/255, (416,416), [0,0,0],crop=False)
+        net.setInput(blob)
 
-    layerNames = net.getLayerNames()
-    outputNames = []
-    for i in net.getUnconnectedOutLayers():
-        outputNames.append(layerNames[i[0] - 1])
-    outputs = net.forward(outputNames)
-    
-    predictions = findObjects(outputs, img)
-    for prediction in predictions:
-        if prediction is not None:
-            pt1, pt2, className = prediction
-            print("Found " + className + " At " + str(pt1))
-            x, y = pt1
-            press('w')
-            moveTo(x, y)
+        layerNames = net.getLayerNames()
+        outputNames = []
+        for i in net.getUnconnectedOutLayers():
+            outputNames.append(layerNames[i[0] - 1])
+        outputs = net.forward(outputNames)
+        
+        predictions = findObjects(outputs, img)
+        for prediction in predictions:
+            if prediction is not None:
+                pt1, pt2, className = prediction
+                print("Found " + className + " At " + str(pt1))
+                x, y = pt1
+                press('w')
+                moveTo(x, y)
 
-            x, y = pt2
-            dragTo(x, y, duration=0.5)
-            cv2.waitKey(50)
-            write(className)
-            press('enter', presses=2)
-        hotkey('ctrl', 's')
+                x, y = pt2
+                dragTo(x, y, duration=0.5)
+                cv2.waitKey(50)
+                write(className)
+                press('enter', presses=2)
+            hotkey('ctrl', 's')
