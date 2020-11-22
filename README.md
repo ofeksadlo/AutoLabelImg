@@ -3,9 +3,11 @@ Automatically annotate images using your own pre-trained yolo models.
 
 ![showcase](showcase%20(2).gif)
 
-# Update
+# Update train.py
 Added train.py edit the path to the folder with your images and run the script. It</br>
 will loop through all the image and annotate all the images for you.
+You will need a very accurate model for this method to be efficient.</br>
+Otherwise use the annotating assistant.</br>
 
 # What is does?
 Open up the tool and go to LabelImg.</br>
